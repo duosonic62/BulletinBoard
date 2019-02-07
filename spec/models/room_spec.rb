@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: rooms
+#
+#  id          :integer          not null, primary key
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  title       :string
+#  description :string
+#
+
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do

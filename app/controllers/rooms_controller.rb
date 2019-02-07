@@ -2,6 +2,14 @@ require "securerandom"
 
 class RoomsController < ApplicationController
   before_action :sign_in_required
+
+  # ルーム一覧を表示
+  def index
+    @rooms = Room.all()
+  end
+  
+
+  # ルームを表示
   def show
     # ルームが存在するか確認
     if Room.exists?(room_id: params[:room][:room_id]) 
@@ -13,10 +21,6 @@ class RoomsController < ApplicationController
       flash.now[:alert] = 'Not a valid room id.'
       render 'index'
     end
-  end
-
-  def index
-    @room = Room.new()
   end
 
   def new

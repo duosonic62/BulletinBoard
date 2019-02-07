@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190122144434) do
+ActiveRecord::Schema.define(version: 20190207042848) do
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
@@ -22,10 +28,22 @@ ActiveRecord::Schema.define(version: 20190122144434) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "room_genre_relations", force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_room_genre_relations_on_genre_id"
+    t.index ["room_id"], name: "index_room_genre_relations_on_room_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "room_id"
+    t.string "title"
+    t.string "description"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

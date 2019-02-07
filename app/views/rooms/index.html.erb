@@ -1,21 +1,17 @@
-<h1>My Page</h1>
+<h1>掲示板一覧</h1>
 <div>
-  <div class="mt-4 mb-5">
-    <h2 class="border-bottom">Create Room</h2>
-    <% if flash[:created_room_id] %>
-      <div class="alert alert-success" role="alert">New room id is <strong> <%= flash[:created_room_id] %> </strong></div>
-    <% end %>
-    <%= link_to 'new room', rooms_new_path, class: 'btn btn-primary' %>
-  </div>
-
-  <div class="login-to-room">
-    <h2 class="border-bottom">Login to Chat Room</h2>
-    <%= form_for(@room, method: :post, :url => {:action => :show}) do |f| %>
-      <div class="form-group mt-3">
-        <%= f.label :room_id, 'Room ID' %>
-        <%= f.text_field :room_id, class: 'form-control' %>
+  <% @rooms.each do |room| %>
+    <div class="bulletin-board-item border-bottom mt-4 mx-auto">
+      <div class="bulletin-board-title">
+        <h3><%= room.title %></h3>
       </div>
-      <%= f.submit 'Login Room', class: 'btn btn-primary' %>
-    <% end %>
-  <div>
+      <div class="bulletin-board-description mx-auto">
+        <p><%= truncate(room.description, length: 150) %></p>
+        <p class="text-right">
+          作成者 : <%= room.user.username %>
+          作成日 : <%= room.created_at.to_s(:ja) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
 </div>

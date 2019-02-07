@@ -15,6 +15,7 @@
 
 class User < ApplicationRecord
   has_many :messages
+  has_many :rooms
 
   validates :username, presence: true, uniqueness: true
   # Include default devise modules. Others available are:
