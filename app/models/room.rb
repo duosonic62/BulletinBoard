@@ -13,8 +13,8 @@
 class Room < ApplicationRecord
   belongs_to :user
   has_many :messages
-  has_many :room_genre_relations
-  has_many :genre, through: :room_genre_relations
+  has_many :room_tag_relations
+  has_many :tag, through: :room_tag_relations
   paginates_per 10
 
   validates :title, presence: true, length: {maximum: 20}
