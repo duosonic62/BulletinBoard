@@ -1,10 +1,9 @@
-<div class="message mt-2">
-  <div class="card d-inline-flex p-2" >
-    <div class="card-body">
-      <p class="card-title border-bottom">
-        <%= simple_format(message.user.username) %> 
-      </p>
-      <p class="card-text"><%= simple_format(message.content) %></p>
-    </div>
-  </div>
+<div class="message mt-2 clearfix border-bottom" id="message_<%= "#{message.id}" %>">
+  <p>
+    <%= simple_format(message.content) %>
+  </p>
+  <p class="text-right">
+    投稿者 : <%= message.user.username %>
+    投稿日 : <%= message.created_at.to_s(:ja) %>
+  </p>
 </div>

@@ -1,0 +1,23 @@
+<%= form_for room do |f| %>
+  <div class="form-group">
+    <%=  f.label :title, '掲示板名' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%=  f.label :description, '説明' %>
+    <%= f.text_area :description, class: 'form-control', rows: 3, maxlength: 300 %>
+  </div>
+  <div class="form-group">
+    <span>ジャンル</span>
+    <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |genre| %>
+      <div class="form-check">
+        <%= genre.label class: 'form-check-label' do %>
+          <%= genre.check_box class: 'form-check-input' %>
+          <%= genre.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit '保存', class: 'btn btn-primary' %>
+<% end %>

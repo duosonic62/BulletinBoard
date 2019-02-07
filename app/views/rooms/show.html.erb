@@ -1,7 +1,8 @@
-<h1>Chat room</h1>
+<h1><%= @room.title %></h1>
+<div class="bulletin-board-description"><%= @room.description %></div>
 <!-- チャットを見ているユーザの情報(id)を格納 -->
 <div id="read_user_id" data-read_user_id="<%= current_user.id %>"></div>
-<div id="messages", data-room_id="<%= @room.id %>">
+<div id="messages" class="messages", data-room_id="<%= @room.id %>">
   <%= render @messages %>
 </div>
 <div class="input fixed-bottom py-3 bg-primary">

@@ -12,6 +12,11 @@
         <% end %>
       </ul>
       <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to '掲示板作成', rooms_new_path, class: 'nav-link' %>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             User

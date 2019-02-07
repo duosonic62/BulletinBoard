@@ -17,4 +17,6 @@ class Room < ApplicationRecord
   has_many :genre, through: :room_genre_relations
   paginates_per 10
 
+  validates :title, presence: true, length: {maximum: 20}
+  validates :description, presence: true, length: {maximum: 300}
 end

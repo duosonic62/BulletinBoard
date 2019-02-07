@@ -15,17 +15,23 @@ if Rails.env == 'development'
     { name: 'Django2'}
   ])
 
-  User.create(
+  User.create([
     {
       username: 'alice',
       password: 'password',
       password_confirmation: 'password',
       email: 'alice@test.com'
-    }
-  )
+    },
+    {
+      username: 'bob',
+      password: 'password',
+      password_confirmation: 'password',
+      email: 'bob@test.com'
+    },
+  ])
 
   (1..50).each do |i|
-    room = Room.new(title: "title#{i}", description: "very long description for this room. this room is about hogehoge. It is maybe good for you.#{i}" * 5, genre_ids: [Genre.find_by(name: 'Ruby').id, Genre.find_by(name: 'Python2').id], user_id: User.all.first.id)
+    room = Room.new(title: "titletitletitletitletitle#{i}", description: "very long description for this room. this room is about hogehoge. It is maybe good for you.#{i}" * 5, genre_ids: [Genre.find_by(name: 'Ruby').id, Genre.find_by(name: 'Python2').id], user_id: User.all.first.id)
     # genre_Ruby = room.room_genre_relations.build
     # genre_Python2 = room.room_genre_relations.build
     # genre_Ruby.genre = Genre.find_by(name: 'Ruby')

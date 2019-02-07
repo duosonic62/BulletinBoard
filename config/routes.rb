@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root  'rooms#index'
   get   'rooms/index'
   get   'rooms/show'
+  get   'rooms/new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

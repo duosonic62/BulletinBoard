@@ -1,12 +1,12 @@
-<div class="message mt-2 clearfix" id="message_<%= "#{message.id}" %>">
-    <div class="card d-inlineflex float-right">
-      <div class="card-body">
-        <p class="card-text">
-          <button type="button" class="close float-right" aria-label="Close" id="<%= "#{message.id}" %>" >
-            <span class="delete_btn" id="<%= "#{message.id}" %>" aria-hidden="true">&times;</span>
-          </button>  
-          <%= simple_format(message.content) %>
-        </p>
-      </div>
-    </div>
+<div class="message mt-2 clearfix border-bottom" id="message_<%= "#{message.id}" %>">
+  <p>
+    <button type="button" class="close" aria-label="Close" id="<%= "#{message.id}" %>" >
+      <span class="delete_btn" id="<%= "#{message.id}" %>" aria-hidden="true">&times;</span>
+    </button>  
+    <%= simple_format(message.content) %>
+  </p>
+  <p class="text-right">
+    投稿者 : <%= message.user.username %>
+    投稿日 : <%= message.created_at.to_s(:ja) %>
+  </p>
 </div>

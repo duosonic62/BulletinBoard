@@ -15,7 +15,6 @@ class RoomsController < ApplicationController
     if Room.exists?(params[:id]) 
       @room = Room.find(params[:id])
       @messages = @room.messages
-      binding.pry
     else
       # ルームが存在しなければ、エラーメッセージをインデックスでレンダリング
       @room = Room.new()
@@ -24,6 +23,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  # ルーム作成フォームを表示
+  def new 
+    @room = Room.new(flash[:room])
+  end
   
   
 end
