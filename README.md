@@ -1,7 +1,9 @@
-# SimpleChat
+# BulletinBoard
 
 ## Description
-You can use chat throught your browser.
+**This application is incomplete.**
+
+You can use bulletin board throught your browser.
 
 ## Requirement
 * Ruby version
@@ -14,11 +16,11 @@ You can use chat throught your browser.
 ### run
 1. clone
 1. Hit the command ```bundle install``` at Application root derectory.
-1. Hit the command ```rails db:migrate``` at Application root derectory.
-1. Hit the command ```rails s``` at Application root derectory.
+1. Hit the command ```bundle exec rails db:migrate``` at Application root derectory.
+1. Hit the command ```bundle exec rails s``` at Application root derectory.
 
 ### test
-1. Hit the command ```rspec spec/``` at Application root derectory.
+1. Hit the command ```bundle exec rspec spec/``` at Application root derectory.
 
 ### chat
 1. Start your browser.

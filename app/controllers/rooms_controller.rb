@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
 
   # ルーム一覧を表示
   def index
-    @rooms = Room.page(params[:page])
+    @rooms = Room.page(params[:page]).order('updated_at DESC')
   end
   
 

@@ -8,11 +8,11 @@
 if Rails.env == 'development'
   Tag.create([
     { name: 'Ruby'},
-    { name: 'Ruby on Rails4'},
-    { name: 'Ruby on Rails5'},
-    { name: 'Python2'},
-    { name: 'Python3'},
-    { name: 'Django2'}
+    { name: 'Ruby on Rails'},
+    { name: 'Java'},
+    { name: 'JavaScript'},
+    { name: 'HTML'},
+    { name: 'CSS'}
   ])
 
   User.create([
@@ -31,7 +31,7 @@ if Rails.env == 'development'
   ])
 
   (1..50).each do |i|
-    room = Room.new(title: "titletitletitle#{i}", description: "very long description for this room. this room is about hogehoge. It is maybe good for you.#{i}" * 2, tag_ids: [Tag.find_by(name: 'Ruby').id, Tag.find_by(name: 'Python2').id], user_id: User.all.first.id)
+    room = Room.new(title: "titletitletitle#{i}", description: "very long description for this room. this room is about hogehoge. It is maybe good for you.#{i}" * 2, tag_ids: [Tag.find_by(name: 'Ruby').id, Tag.find_by(name: 'Java').id], user_id: User.all.first.id)
     # Tag_Ruby = room.room_Tag_relations.build
     # Tag_Python2 = room.room_Tag_relations.build
     # Tag_Ruby.Tag = Tag.find_by(name: 'Ruby')
