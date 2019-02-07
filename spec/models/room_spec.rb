@@ -7,6 +7,7 @@
 #  updated_at  :datetime         not null
 #  title       :string
 #  description :string
+#  user_id     :integer
 #
 
 require 'rails_helper'

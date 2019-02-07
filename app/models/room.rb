@@ -7,6 +7,7 @@
 #  updated_at  :datetime         not null
 #  title       :string
 #  description :string
+#  user_id     :integer
 #
 
 class Room < ApplicationRecord
@@ -14,5 +15,6 @@ class Room < ApplicationRecord
   has_many :messages
   has_many :room_genre_relations
   has_many :genre, through: :room_genre_relations
+  paginates_per 10
 
 end

@@ -3,7 +3,7 @@
   <% @rooms.each do |room| %>
     <div class="bulletin-board-item border-bottom mt-4 mx-auto">
       <div class="bulletin-board-title">
-        <h3><%= room.title %></h3>
+        <h3><%= link_to room.title, rooms_show_path(room, id: room.id) %></h3>
       </div>
       <div class="bulletin-board-description mx-auto">
         <p><%= truncate(room.description, length: 150) %></p>
@@ -14,4 +14,5 @@
       </div>
     </div>
   <% end %>
+  <%= paginate @rooms %>
 </div>

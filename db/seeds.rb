@@ -30,7 +30,11 @@ if Rails.env == 'development'
     # genre_Python2 = room.room_genre_relations.build
     # genre_Ruby.genre = Genre.find_by(name: 'Ruby')
     # genre_Python2.genre = Genre.find_by(name: 'Python2')
-
     room.save!
+  end
+
+  (1..10).each do |i|
+    message = Message.new(content: "comment#{i}", user_id:  User.all.first.id, room_id: Room.all.first.id)
+    message.save!
   end
 end
