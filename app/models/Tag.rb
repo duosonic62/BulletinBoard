@@ -12,7 +12,7 @@ class Tag < ApplicationRecord
   has_many :room_tag_relations
   has_many :room, through: :room_tag_relations
 
-  validates :name, presence: true, uniqueness: true, length: {maximum: 10}
+  validates :name, presence: true, uniqueness: true, length: {maximum: 20}
   # tagが作成されたら、ジョブのキューに送信するメッセージを追加
   after_create_commit { TagBroadcastJob.perform_later self }
 end

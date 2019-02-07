@@ -17,6 +17,6 @@ class Room < ApplicationRecord
   has_many :tag, through: :room_tag_relations
   paginates_per 10
 
-  validates :title, presence: true, length: {maximum: 20}
+  validates :title, presence: true, length: {maximum: 50}
   validates :description, presence: true, length: {maximum: 300}
 end
