@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: genres
+# Table name: tags
 #
 #  id         :integer          not null, primary key
 #  name       :string           not null
@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-class Genre < ApplicationRecord
-  has_many :room_genre_relations
-  has_many :room, through: :room_genre_relations
+class Tag < ApplicationRecord
+  has_many :room_tag_relations
+  has_many :room, through: :room_tag_relations
 end

@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: room_genre_relations
+# Table name: room_tag_relations
 #
 #  id         :integer          not null, primary key
 #  room_id    :integer
-#  genre_id   :integer
+#  tag_id     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class RoomGenreRelation < ApplicationRecord
+class RoomTagRelation < ApplicationRecord
   belongs_to :room
-  belongs_to :genre
+  belongs_to :tag
 end

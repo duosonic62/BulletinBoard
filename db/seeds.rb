@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env == 'development'
-  Genre.create([
+  Tag.create([
     { name: 'Ruby'},
     { name: 'Ruby on Rails4'},
     { name: 'Ruby on Rails5'},
@@ -31,11 +31,11 @@ if Rails.env == 'development'
   ])
 
   (1..50).each do |i|
-    room = Room.new(title: "titletitletitletitletitle#{i}", description: "very long description for this room. this room is about hogehoge. It is maybe good for you.#{i}" * 5, genre_ids: [Genre.find_by(name: 'Ruby').id, Genre.find_by(name: 'Python2').id], user_id: User.all.first.id)
-    # genre_Ruby = room.room_genre_relations.build
-    # genre_Python2 = room.room_genre_relations.build
-    # genre_Ruby.genre = Genre.find_by(name: 'Ruby')
-    # genre_Python2.genre = Genre.find_by(name: 'Python2')
+    room = Room.new(title: "titletitletitle#{i}", description: "very long description for this room. this room is about hogehoge. It is maybe good for you.#{i}" * 2, tag_ids: [Tag.find_by(name: 'Ruby').id, Tag.find_by(name: 'Python2').id], user_id: User.all.first.id)
+    # Tag_Ruby = room.room_Tag_relations.build
+    # Tag_Python2 = room.room_Tag_relations.build
+    # Tag_Ruby.Tag = Tag.find_by(name: 'Ruby')
+    # Tag_Python2.Tag = Tag.find_by(name: 'Python2')
     room.save!
   end
 
