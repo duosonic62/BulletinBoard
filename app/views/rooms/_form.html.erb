@@ -1,23 +1,30 @@
 <%= form_for room do |f| %>
   <div class="form-group">
-    <%=  f.label :title, '掲示板名' %>
+    <%= f.label :title, '掲示板名' %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%=  f.label :description, '説明' %>
+    <%= f.label :description, '説明' %>
     <%= f.text_area :description, class: 'form-control', rows: 3, maxlength: 300 %>
   </div>
   <div class="form-group">
     <span>タグ</span>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-      <div class="form-check">
-        <%= tag.label class: 'form-check-label' do %>
-          <%= tag.check_box class: 'form-check-input' %>
-          <%= tag.text %>
-        <% end %>
-      </div>
-    <% end %>
+    <div id="tag_checkboxies">
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div class="tag_checkbox ml-4">
+          <%= tag.label class: 'form-check-label' do %>
+            <%= tag.check_box class: 'form-check-input' %>
+            <%= tag.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
+  <div class="mb-5">
+    <span>新規タグ : </span>
+    <input type="text" style="width:30%;" id="tag_name" ></textarea>
+    <span class="btn btn-primary tag_create" id="tag_create">作成</span>
+  </div>
   <%= f.submit '保存', class: 'btn btn-primary' %>
+
 <% end %>
