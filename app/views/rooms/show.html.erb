@@ -1,10 +1,14 @@
 <h1><%= @room.title %></h1>
+<div class="clearfix my-2">
+  <%= render @room.tag %>
+</div>
 <div class="bulletin-board-description"><%= @room.description %></div>
 <!-- チャットを見ているユーザの情報(id)を格納 -->
 <div id="read_user_id" data-read_user_id="<%= current_user.id %>"></div>
 <div id="messages" class="messages", data-room_id="<%= @room.id %>">
   <%= render @messages %>
 </div>
+
 <div class="input fixed-bottom py-3 bg-primary">
   <form class="container">
     <div class="form-group">
