@@ -1,0 +1,12 @@
+/* テーマカラーを変更する */
+$theme-colors: (
+  primary: #C3866D,
+  secondary: #6F858E, /* デフォルトにないカラーの追加 */
+  success: rgb(84, 142, 189),
+  danger: #BE5364,
+  warning: #CE8E37,
+  info: #779382,
+  dark: #5D4B3A,
+  light: #EEE9D0,
+  white: #F9F9F8
+);

@@ -1,17 +1,6 @@
-// Place all the styles related to the rooms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-$theme-colors: (
-  primary: #C3866D,
-  secondary: #6F858E, /* デフォルトにないカラーの追加 */
-  success: rgb(84, 142, 189),
-  danger: #BE5364,
-  warning: #CE8E37,
-  info: #779382,
-  dark: #5D4B3A,
-  light: #EEE9D0,
-  white: #F9F9F8
-);
+/* テーマカラーを読み込む */
+@import "themecolors.scss";
+
 .bulletin-board-item{
   width: 90%;
 }

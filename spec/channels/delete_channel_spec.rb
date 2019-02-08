@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe DeleteChannel, type: :channel do
-  let(:message) { create(:message_to_bob) }
-  let(:user) { message.user }
-  let(:room) { message.room }
+  let(:message) { create(:message_to_bob, user: user, room: room) }
+  let(:user) { create(:alice) }
+  let(:room) { create(:alice_bob_room, user: user) }
 
   before do
     # identifiersでコネクションをイニシャライズ
@@ -19,8 +19,10 @@ RSpec.describe DeleteChannel, type: :channel do
   end
 
   context '#delete' do
-    let(:alice) { create(:alice) }
+    let(:bob) { create(:bob) }
     before do
+      # メッセージを作成させる
+      message
       # コネクションのスタブにcurrent_userメソッドを追加する
       class ActionCable::Channel::ConnectionStub
         def current_user
@@ -38,8 +40,8 @@ RSpec.describe DeleteChannel, type: :channel do
 
     it 'メッセージのIDが不正な場合は削除されないこと' do
       subscribe()
-      # メッセージ送信者以外のuser(alice)をcurrent_userに返させて、削除を失敗させる
-      allow(connection).to receive(:current_user).and_return(alice)
+      # メッセージ送信者以外のuser(bob)をcurrent_userに返させて、削除を失敗させる
+      allow(connection).to receive(:current_user).and_return(bob)
       perform :delete, id: message.id
       expect(subscription).to be_rejected
     end

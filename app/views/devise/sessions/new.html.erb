@@ -1,5 +1,5 @@
-<h2 class="border-bottom">Sign in</h2>
-
+<h2 class="border-bottom">サインイン</h2>
+<%= render 'shared/notice' %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
     <%= f.label :email %><br />
@@ -19,9 +19,9 @@
   <% end -%>
 
   <div class="actions form-group">
-    <%= f.submit "Sign in", class: "btn btn-primary mr-3" %> 
+    <%= f.submit "サインイン", class: "btn btn-primary mr-3" %> 
     or
-    <%= link_to "Sign up?", new_registration_path(resource_name), class: "ml-3" %>
+    <%= link_to "ユーザー作成", new_registration_path(resource_name), class: "ml-3" %>
   </div>
 <% end %>
 

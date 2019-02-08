@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe RoomChannel, type: :channel do
-  let(:message) { create(:message_to_bob) }
-  let(:user) { message.user }
-  let(:room) { message.room }
+  let(:message) { create(:message_to_bob, user: user, room: room) }
+  let(:user) { create(:alice) }
+  let(:room) { create(:alice_bob_room, user: user) }
 
   before do
     # identifiersでコネクションをイニシャライズ

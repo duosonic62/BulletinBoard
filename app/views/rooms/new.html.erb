@@ -4,4 +4,5 @@
     <%= link_to '一覧', rooms_index_path, class: 'btn btn-outline-dark' %>
    </div>
 </div>
+<%= render 'shared/notice' %>
 <%= render partial: 'form', locals: { room: @room } %>
