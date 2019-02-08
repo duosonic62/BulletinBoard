@@ -1,15 +1,10 @@
 # == Schema Information
 #
-# Table name: genres
+# Table name: room_tag_relations
 #
 #  id         :integer          not null, primary key
-#  name       :string           not null
+#  room_id    :integer
+#  tag_id     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-FactoryBot.define do
-  factory :genre do
-    name { "MyString" }
-  end
-end

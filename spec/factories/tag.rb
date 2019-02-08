@@ -1,17 +1,19 @@
 # == Schema Information
 #
-# Table name: room_genre_relations
+# Table name: genres
 #
 #  id         :integer          not null, primary key
-#  room_id    :integer
-#  genre_id   :integer
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 FactoryBot.define do
-  factory :room_genre_relation do
-    room { nil }
-    genre { nil }
+  factory :java, class: Tag do
+    name { "java" }
+  end
+
+  factory :ruby, class: Tag do
+    name { "ruby" }
   end
 end

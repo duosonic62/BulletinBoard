@@ -37,15 +37,14 @@ class RoomsController < ApplicationController
     else
       redirect_to rooms_new_path, flash: {
         room: room,
-        alert: room.errors.full_messages
+        error_messages: room.errors.full_messages
       }
     end
   end
-
 
   private
   def room_params
     params.require(:room).permit(:title, :description, tag_ids: [])
   end
-  
+
 end

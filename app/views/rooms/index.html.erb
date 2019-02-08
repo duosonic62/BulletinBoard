@@ -7,6 +7,7 @@
       </div>
       <div class="bulletin-board-description mx-auto">
         <p><%= truncate(room.description, length: 150) %></p>
+        <div class="clearfix"><%= render room.tag %></div>
         <p class="text-right">
           作成者 : <%= room.user.username %>
           作成日 : <%= room.created_at.to_s(:ja) %>

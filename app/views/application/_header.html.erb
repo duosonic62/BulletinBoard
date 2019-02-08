@@ -6,9 +6,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <%= link_to 'Simple Chat', rooms_index_path, class: 'navbar-brand' %>
+          <%= link_to '掲示板', rooms_index_path, class: 'navbar-brand' %>
         <% else %>
-          <%= link_to 'Simple Chat', new_user_session_path, class: 'navbar-brand' %>
+          <%= link_to '掲示板', new_user_session_path, class: 'navbar-brand' %>
         <% end %>
       </ul>
       <ul class="navbar-nav">
@@ -19,17 +19,17 @@
         <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            User
+            ユーザー
           </a>
           <% if user_signed_in? %>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+              <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'dropdown-item' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
             </div>
           <% else %>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'Sign up', new_user_registration_path, class: 'dropdown-item' %>
-              <%= link_to 'Sign in', new_user_session_path, class: 'dropdown-item' %>
+              <%= link_to 'ユーザー作成', new_user_registration_path, class: 'dropdown-item' %>
+              <%= link_to 'サインイン', new_user_session_path, class: 'dropdown-item' %>
             </div>
           <% end %>
         </li>
