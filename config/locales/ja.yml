@@ -6,3 +6,19 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+  activerecord:
+    attributes:
+      user:
+        username: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        current_password: 現在のパスワード
+        remember_me: 次回から自動的にログイン
+      room:
+        title: タイトル
+        description: 掲示板説明
+      message:
+        content: 投稿
+      tag:
+        name: タグ

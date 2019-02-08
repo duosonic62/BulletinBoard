@@ -9,12 +9,12 @@
   </div>
   <div class="form-group">
     <span>タグ</span>
-    <div id="tag_checkboxies">
+    <div id="tag_checkboxies" class="clearfix">
       <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-        <div class="tag_checkbox ml-4">
+        <div class="checkbox tag_checkbox m-2 float-left">
           <%= tag.label class: 'form-check-label' do %>
             <%= tag.check_box class: 'form-check-input' %>
-            <%= tag.text %>
+            <span> <%= tag.text %> </span>
           <% end %>
         </div>
       <% end %>
