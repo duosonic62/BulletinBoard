@@ -1,6 +1,17 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$theme-colors: (
+  primary: #C3866D,
+  secondary: #6F858E, /* デフォルトにないカラーの追加 */
+  success: rgb(84, 142, 189),
+  danger: #BE5364,
+  warning: #CE8E37,
+  info: #779382,
+  dark: #5D4B3A,
+  light: #EEE9D0,
+  white: #F9F9F8
+);
 .bulletin-board-item{
   width: 90%;
 }
@@ -16,4 +27,25 @@
 .message {
   width: 90%;
   margin: auto;
+}
+
+.checkbox label {
+  position: relative;
+  display: block;
+}
+.checkbox label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox label input[type="checkbox"] + span {
+  display: block;
+  background-color: map-get($theme-colors, light);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.checkbox label input[type="checkbox"]:checked + span {
+  background-color: map-get($theme-colors, success);
+  color: white;
 }
