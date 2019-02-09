@@ -10,6 +10,7 @@ class TagChannel < ApplicationCable::Channel
 
   def create(data)
     tag = Tag.new(name: data['tag_name'])
+    
     if tag.valid?
       # バリデーションが通った場合のみ登録
       Tag.create!(name: data['tag_name'])
