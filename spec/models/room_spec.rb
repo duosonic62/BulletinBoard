@@ -13,13 +13,16 @@
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
+
+  let(:user) { create(:alice) }
+
   context 'roomモデルに正常な値を渡す' do
     before do
-      create(:alice_bob_room)
+      create(:alice_bob_room, user: user)
     end
 
     # alice_bob_roomと被っていない正常な情報を準備
-    let(:room) { Room.new(room_id: 'testroom') }
+    let(:room) { Room.new(title: 'test room', description: 'test description',user: user) }
 
     it 'validationにかからないこと' do
       room.valid?
@@ -28,20 +31,23 @@ RSpec.describe Room, type: :model do
    end
 
    context 'roomモデルに異常な値を渡す' do
-    context 'room_idへのvalidationの確認'do
-      it 'uniquenessが効くこと' do
-        create(:alice_bob_room)
-        room = build_stubbed(:alice_bob_room)
-        room.valid?
-        expect(room.errors.messages[:room_id]).to include('has already been taken')
-      end
+    it 'presenceが効くこと' do
+      room = Room.new()
+      room.valid?
+      expect(room.errors.messages[:title]).to include('を入力してください')
+      expect(room.errors.messages[:description]).to include('を入力してください')
+    end
 
-      it 'presenceが効くこと' do
-        room = Room.new()
-        room.valid?
-        expect(room.errors.messages[:room_id]).to include("can't be blank")
-      end
+    it 'lengthが効くこと' do
+      room = Room.new(title: 'a' * 51 , description: 'a' * 301)
+      room.valid?
+      expect(room.errors.messages[:title]).to include('は50文字以内で入力してください')
+      expect(room.errors.messages[:description]).to include('は300文字以内で入力してください')
 
+      room = Room.new(title: 'a' * 50 , description: 'a' * 300)
+      room.valid?
+      expect(room.errors.messages[:title]).not_to include('は50文字以内で入力してください')
+      expect(room.errors.messages[:description]).not_to include('は300文字以内で入力してください')
     end
    end
 end

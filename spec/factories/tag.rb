@@ -9,11 +9,11 @@
 #
 
 FactoryBot.define do
-  factory :java, class: Tag do
+  factory :java_tag, class: Tag do
     name { "java" }
   end
 
-  factory :ruby, class: Tag do
+  factory :ruby_tag , class: Tag do
     name { "ruby" }
   end
 end

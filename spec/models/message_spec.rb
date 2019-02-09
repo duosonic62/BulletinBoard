@@ -14,26 +14,24 @@ require 'rails_helper'
 
 RSpec.describe Message, type: :model do
   context 'messageモデルに正常な値を渡す' do
+    let(:user) { create(:alice) }
+    let(:room) { create(:alice_bob_room, user: user) }
 
     let(:hash_message) {[
       content: 'hello Bob!',
-      user_id: User.all.first[:id],
-      room_id: Room.all.first[:id]
+      user_id: user.id,
+      room_id: room.id
     ]}
 
-    let(:message) { Message.new(content: 'hello Bob!', user_id: User.all.first[:id], room_id: Room.all.first[:id]) }
+    let(:message) { Message.new(content: 'hello Bob!', user_id: user.id, room_id: room.id) }
 
     it '登録完了後にMessageBroadcastJob.perform_laterを呼び出すこと' do
-      create(:alice_bob_room)
-      create(:alice)
       # messageをDBに保存した後に、MessageBroadcastJob.perform_laterが呼び出されていることを確認
       expect(MessageBroadcastJob).to receive(:perform_later).once
       Message.create!(hash_message)
     end
 
     it 'validationにかからないこと' do
-      create(:alice_bob_room)
-      create(:alice)
       message.valid?
       expect(message).to be_valid
     end
@@ -45,17 +43,17 @@ RSpec.describe Message, type: :model do
       it 'presenceが効くこと' do
         message = Message.new()
         message.valid?
-        expect(message.errors.messages[:content]).to include("can't be blank")
+        expect(message.errors.messages[:content]).to include('を入力してください')
       end
 
       it 'lengthが効くこと' do
         message = Message.new(content: 'a' * 1001 )
         message.valid?
-        expect(message.errors.messages[:content]).to include('is too long (maximum is 1000 characters)')
+        expect(message.errors.messages[:content]).to include('は1000文字以内で入力してください')
 
         message = Message.new(content: 'a' * 1000 )
         message.valid?
-        expect(message.errors.messages[:content]).not_to include('is too long (maximum is 1000 characters)')
+        expect(message.errors.messages[:content]).not_to include('は1000文字以内で入力してください')
       end
     end
    end

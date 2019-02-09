@@ -17,8 +17,8 @@ class RoomsController < ApplicationController
       @messages = @room.messages
     else
       # ルームが存在しなければ、エラーメッセージをインデックスでレンダリング
-      @room = Room.new()
-      flash.now[:alert] = 'Not a valid room id.'
+      @rooms = Room.page(params[:page]).order('updated_at DESC')
+      flash.now[:alert] = '掲示板番号が不正です'
       render 'index'
     end
   end
